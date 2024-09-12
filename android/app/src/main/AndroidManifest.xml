@@ -2,6 +2,10 @@
     <application
         android:label="ads_tv_flutter"
         android:name="${applicationName}"
+        android:enableOnBackInvokedCallback="true"
+        android:allowBackup="false"
+        android:fullBackupContent="false"
+        android:usesCleartextTraffic="true"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

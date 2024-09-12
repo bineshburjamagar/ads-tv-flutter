@@ -5,8 +5,12 @@ class CustomVideoPlayer extends StatefulWidget {
   const CustomVideoPlayer({
     super.key,
     required this.link,
+    required this.currentIndex,
+    required this.onIndexChange,
   });
   final String link;
+  final int currentIndex;
+  final Function() onIndexChange;
 
   @override
   State<CustomVideoPlayer> createState() => _CustomVideoPlayerState();
@@ -17,16 +21,29 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
   @override
   void initState() {
     super.initState();
-    BetterPlayerDataSource betterPlayerDataSource =
-        BetterPlayerDataSource(BetterPlayerDataSourceType.network, widget.link);
+    BetterPlayerDataSource betterPlayerDataSource = BetterPlayerDataSource(
+      BetterPlayerDataSourceType.network,
+      widget.link,
+    );
     _betterPlayerController = BetterPlayerController(
-        const BetterPlayerConfiguration(),
+        const BetterPlayerConfiguration(
+          autoPlay: true,
+          autoDispose: true,
+          fit: BoxFit.cover,
+          expandToFill: true,
+        ),
         betterPlayerDataSource: betterPlayerDataSource);
+
+    _betterPlayerController.addEventsListener((eventListener) {
+      if (eventListener.betterPlayerEventType ==
+          BetterPlayerEventType.finished) {
+        widget.onIndexChange.call();
+      }
+    });
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     _betterPlayerController.dispose();
   }
