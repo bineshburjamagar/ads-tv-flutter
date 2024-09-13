@@ -26,13 +26,18 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
       widget.link,
     );
     _betterPlayerController = BetterPlayerController(
-        const BetterPlayerConfiguration(
-          autoPlay: true,
-          autoDispose: true,
-          fit: BoxFit.cover,
-          expandToFill: true,
+      const BetterPlayerConfiguration(
+        autoPlay: true,
+        autoDispose: true,
+        fit: BoxFit.cover,
+        expandToFill: true,
+        allowedScreenSleep: false,
+        controlsConfiguration: BetterPlayerControlsConfiguration(
+          showControls: false,
         ),
-        betterPlayerDataSource: betterPlayerDataSource);
+      ),
+      betterPlayerDataSource: betterPlayerDataSource,
+    );
 
     _betterPlayerController.addEventsListener((eventListener) {
       if (eventListener.betterPlayerEventType ==
