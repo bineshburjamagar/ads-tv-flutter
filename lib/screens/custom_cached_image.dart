@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:developer';
 
-import 'package:ads_tv_flutter/models.dart';
+import 'package:ads_tv_flutter/models/models.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +19,7 @@ class CustomCachedImage extends StatefulWidget {
 }
 
 class _CustomCachedImageState extends State<CustomCachedImage> {
-  Duration duration = const Duration(seconds: 5);
+  Duration duration = const Duration(seconds: 10);
 
   @override
   void initState() {

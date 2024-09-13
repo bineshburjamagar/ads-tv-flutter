@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:ads_tv_flutter/models.dart';
+import 'package:ads_tv_flutter/models/models.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'custom_cached_image.dart';
